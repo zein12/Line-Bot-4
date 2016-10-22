@@ -52,11 +52,25 @@ if (!is_null($events['events'])) {
 3. th ... -> to translate a word/sentence to Thai
 4. en ... -> to translate a word/sentence to English
 5. shorten [url] -> to create Google short link
-6. help -> to see all the commands
+6. rand [min-max](optional) -> to random number from .. to ..
+7. help -> to see all the commands
 				===============
 Hope you enjoy :)'
 				];						
 			}
+			else if($cmd[0] == "rand") {
+				$text = substr(strstr($text," "), 1);
+				if (strpos($text, "-") !== FALSE) { 
+					$r = explode("-",$text);
+					$text = rand($r[0],$r[1]);
+				}
+				else $text = rand(0,1);
+				$text = substr(strstr($text," "), 1);
+				$messages = [
+					'type' => 'text',
+					'text' => "Random result: ".$text
+				];			
+			}			
 			else if($cmd[0] == "shorten") {
 				$text = substr(strstr($text," "), 1);
 				$messages = [
