@@ -51,7 +51,7 @@ if (!is_null($events['events'])) {
 2. img ... -> to search images
 3. th ... -> to translate a word/sentence to Thai
 4. en ... -> to translate a word/sentence to English
-5. shorten [url] -> to create short link using goo.gl 
+5. shorten [url] -> to create Google short link
 6. help -> to see all the commands
 				===============
 Hope you enjoy :)'
@@ -69,7 +69,10 @@ Hope you enjoy :)'
 				$key = '071e93df3d824296a6b86c0e2b85944b';
 				$q = urlencode($text);
 				$count = 1;
-				$offset = 0;
+				if (($pos = strpos($text, "offset")) !== FALSE) { 
+					 $offset = substr($text, $pos+2);
+				}
+				else $offset = 0;
 				$url = 'https://api.cognitive.microsoft.com/bing/v5.0/images/search/?q='.$q.'&count='.$count."&offset=".$offset;
 				$headers = array('Ocp-Apim-Subscription-Key: ' . $key);
 				$ch = curl_init();
@@ -112,7 +115,10 @@ Hope you enjoy :)'
 				$key = '071e93df3d824296a6b86c0e2b85944b';
 				$q = urlencode($text);
 				$count = 3;
-				$offset = 0;
+				if (($pos = strpos($text, "offset")) !== FALSE) { 
+					 $offset = substr($text, $pos+2);
+				}
+				else $offset = 0;
 				$url = 'https://api.cognitive.microsoft.com/bing/v5.0/search/?q='.$q.'&count='.$count."&offset=".$offset;
 				$headers = array('Ocp-Apim-Subscription-Key: ' . $key);
 				$ch = curl_init();
