@@ -47,8 +47,8 @@ if (!is_null($events['events'])) {
 					'type' => 'text',
 					'text' => 'Gain Bot commands:
 				===============
-1. search ...  -> to search for websites
-2. img ... -> to search images
+1. search ... page(optional) ... -> to search for websites
+2. img ... page(optional) ... -> to search images
 3. th ... -> to translate a word/sentence to Thai
 4. en ... -> to translate a word/sentence to English
 5. shorten [url] -> to create Google short link
@@ -68,10 +68,10 @@ Hope you enjoy :)'
 				$text = substr(strstr($text," "), 1);
 				$key = '071e93df3d824296a6b86c0e2b85944b';
 				$count = 1;
-				if (strpos($text, "offset") !== FALSE) { 
-					preg_match('/offset\s*(\d+)/', $text, $matches);
-					$offset = $matches[1];
-					$text = substr($text, 0, strpos($text, "offset"));
+				if (strpos($text, "page") !== FALSE) { 
+					preg_match('/page\s*(\d+)/', $text, $matches);
+					$offset = $matches[1]*$count;
+					$text = substr($text, 0, strpos($text, "page"));
 				}
 				else $offset = 0;
 				$q = urlencode($text);				
@@ -116,10 +116,10 @@ Hope you enjoy :)'
 				$text = substr(strstr($text," "), 1);
 				$key = '071e93df3d824296a6b86c0e2b85944b';	
 				$count = 3;
-				if (strpos($text, "offset") !== FALSE) { 
-					preg_match('/offset\s*(\d+)/', $text, $matches);
-					$offset = $matches[1];
-					$text = substr($text, 0, strpos($text, "offset"));
+				if (strpos($text, "page") !== FALSE) { 
+					preg_match('/page\s*(\d+)/', $text, $matches);
+					$offset = $matches[1]*$count;
+					$text = substr($text, 0, strpos($text, "page"));
 				}
 				else $offset = 0;
 				$q = urlencode($text);				
