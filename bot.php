@@ -69,8 +69,9 @@ Hope you enjoy :)'
 				$key = '071e93df3d824296a6b86c0e2b85944b';
 				$q = urlencode($text);
 				$count = 1;
-				if (($pos = strpos($text, "offset")) !== FALSE) { 
-					 $offset = substr($text, $pos+2);
+				if (strpos($text, "offset") !== FALSE) { 
+					preg_match('/offset:\s*(\d+)/', $text, $matches);
+					$offset = $matches[1];
 				}
 				else $offset = 0;
 				$url = 'https://api.cognitive.microsoft.com/bing/v5.0/images/search/?q='.$q.'&count='.$count."&offset=".$offset;
@@ -93,7 +94,7 @@ Hope you enjoy :)'
 				$messages = [
 					[
 						'type' => 'text',
-						'text' => 'Image Search: '.$q			
+						'text' => 'Image Search: '.$text			
 					],					
 					[
 						"type" => "image",
@@ -115,8 +116,9 @@ Hope you enjoy :)'
 				$key = '071e93df3d824296a6b86c0e2b85944b';
 				$q = urlencode($text);
 				$count = 3;
-				if (($pos = strpos($text, "offset")) !== FALSE) { 
-					 $offset = substr($text, $pos+2);
+				if (strpos($text, "offset") !== FALSE) { 
+					preg_match('/offset:\s*(\d+)/', $text, $matches);
+					$offset = $matches[1];
 				}
 				else $offset = 0;
 				$url = 'https://api.cognitive.microsoft.com/bing/v5.0/search/?q='.$q.'&count='.$count."&offset=".$offset;
@@ -137,7 +139,7 @@ Hope you enjoy :)'
 				$messages = [
 					[
 						'type' => 'text',
-						'text' => 'Web Search: '.$q			
+						'text' => 'Web Search: '.$text			
 					],
 					[
 						'type' => 'text',
