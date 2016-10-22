@@ -67,12 +67,13 @@ Hope you enjoy :)'
 			else if($cmd[0] == "img") {
 				$text = substr(strstr($text," "), 1);
 				$key = '071e93df3d824296a6b86c0e2b85944b';
-				$q = urlencode($text);
 				$count = 1;
 				if (strpos($text, "offset") !== FALSE) { 
-					preg_match('/offset:\s*(\d+)/', $text, $matches);
+					preg_match('/offset\s*(\d+)/', $text, $matches);
 					$offset = $matches[1];
+					$text = substr($text, 0, strpos($text, "offset"));
 				}
+				$q = urlencode($text);
 				else $offset = 0;
 				$url = 'https://api.cognitive.microsoft.com/bing/v5.0/images/search/?q='.$q.'&count='.$count."&offset=".$offset;
 				$headers = array('Ocp-Apim-Subscription-Key: ' . $key);
@@ -113,13 +114,14 @@ Hope you enjoy :)'
 			}
 			else if($cmd[0] == "search") {
 				$text = substr(strstr($text," "), 1);
-				$key = '071e93df3d824296a6b86c0e2b85944b';
-				$q = urlencode($text);
+				$key = '071e93df3d824296a6b86c0e2b85944b';	
 				$count = 3;
 				if (strpos($text, "offset") !== FALSE) { 
-					preg_match('/offset:\s*(\d+)/', $text, $matches);
+					preg_match('/offset\s*(\d+)/', $text, $matches);
 					$offset = $matches[1];
+					$text = substr($text, 0, strpos($text, "offset"));
 				}
+				$q = urlencode($text);
 				else $offset = 0;
 				$url = 'https://api.cognitive.microsoft.com/bing/v5.0/search/?q='.$q.'&count='.$count."&offset=".$offset;
 				$headers = array('Ocp-Apim-Subscription-Key: ' . $key);
