@@ -42,7 +42,7 @@ if (!is_null($events['events'])) {
 			
 			$cmd = explode(" ",trim($text));
 			$cmd[0] = strtolower($cmd[0]);
-			if($text == "help") {
+			if(strtolower($text) == "help") {
 				$messages = [
 					'type' => 'text',
 					'text' => 'Gain Bot commands:
