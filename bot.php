@@ -47,8 +47,8 @@ if (!is_null($events['events'])) {
 					'type' => 'text',
 					'text' => 'Gain Bot commands:
 				===============
-1. search ... page(optional) ... -> to search for websites
-2. img ... page(optional) ... -> to search images
+1. search ... page(optional) 1,2,3 -> to search for websites
+2. img ... page(optional) 1,2,3 -> to search images
 3. th ... -> to translate a word/sentence to Thai
 4. en ... -> to translate a word/sentence to English
 5. shorten [url] -> to create Google short link
@@ -70,7 +70,7 @@ Hope you enjoy :)'
 				$count = 1;
 				if (strpos($text, "page") !== FALSE) { 
 					preg_match('/page\s*(\d+)/', $text, $matches);
-					$offset = $matches[1]*$count;
+					$offset = ($matches[1]-1)*$count;
 					$text = substr($text, 0, strpos($text, "page"));
 				}
 				else $offset = 0;
@@ -118,7 +118,7 @@ Hope you enjoy :)'
 				$count = 3;
 				if (strpos($text, "page") !== FALSE) { 
 					preg_match('/page\s*(\d+)/', $text, $matches);
-					$offset = $matches[1]*$count;
+					$offset = ($matches[1]-1)*$count;
 					$text = substr($text, 0, strpos($text, "page"));
 				}
 				else $offset = 0;
