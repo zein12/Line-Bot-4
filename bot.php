@@ -46,15 +46,15 @@ if (!is_null($events['events'])) {
 				$messages = [
 					'type' => 'text',
 					'text' => 'Gain Bot commands:
-				================
-				  search ...  -> to search for websites
-				  img ... -> to search images
-				  th ... -> to translate a word/sentence to Thai
-				  en ... -> to translate a word/sentence to English
-				  shorten [url] -> to create short url using goo.gl 
-				  help -> to see all the commands
-				================
-				Hope you enjoy (kidding)'
+				===============
+search ...  -> to search for websites
+img ... -> to search images
+th ... -> to translate a word/sentence to Thai
+en ... -> to translate a word/sentence to English
+shorten [url] -> to create short url using goo.gl 
+help -> to see all the commands
+				===============
+Hope you enjoy (kidding)'
 				];						
 			}
 			else if($cmd[0] == "shorten") {
