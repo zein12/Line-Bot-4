@@ -215,7 +215,7 @@ Hope you enjoy :)'
 			}
 			else if($event['source']['type'] == 'user'){
 				$input = str_replace("\\","", $text);
-				$input = urlencode($input);			
+				$input = urlencode($input);
 				$url = "http://www.pandorabots.com/pandora/talk-xml?botid=dd39ca224e3476a6&custid=".$uid."&input=".$input;
 				$ans = get_content("that",file_get_contents($url));
 				$ans = strip_tags(html_entity_decode($ans));
@@ -224,6 +224,7 @@ Hope you enjoy :)'
 					'text' => $ans
 				];
 			}
+			else exit();
 		
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
