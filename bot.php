@@ -213,7 +213,7 @@ Hope you enjoy :)'
 					"stickerId" => rand(1,10)
 				];			
 			}
-			else {
+			else if($event['source']['type'] == 'user'){
 				$input = str_replace("\\","", $text);
 				$input = urlencode($input);			
 				$url = "http://www.pandorabots.com/pandora/talk-xml?botid=dd39ca224e3476a6&custid=".$uid."&input=".$input;
@@ -221,7 +221,7 @@ Hope you enjoy :)'
 				$ans = strip_tags(html_entity_decode($ans));
 				$messages = [
 					'type' => 'text',
-					'text' => $event['source']['type']
+					'text' => $ans
 				];
 			}
 		
