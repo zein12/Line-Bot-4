@@ -47,14 +47,14 @@ if (!is_null($events['events'])) {
 					'type' => 'text',
 					'text' => 'Gain Bot commands:
 				===============
-search ...  -> to search for websites
-img ... -> to search images
-th ... -> to translate a word/sentence to Thai
-en ... -> to translate a word/sentence to English
-shorten [url] -> to create short url using goo.gl 
-help -> to see all the commands
+1. search ...  -> to search for websites
+2. img ... -> to search images
+3. th ... -> to translate a word/sentence to Thai
+4. en ... -> to translate a word/sentence to English
+5. shorten [url] -> to create short link using goo.gl 
+6. help -> to see all the commands
 				===============
-Hope you enjoy (kidding)'
+Hope you enjoy :)'
 				];						
 			}
 			else if($cmd[0] == "shorten") {
