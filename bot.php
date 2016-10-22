@@ -221,7 +221,7 @@ Hope you enjoy :)'
 				$ans = strip_tags(html_entity_decode($ans));
 				$messages = [
 					'type' => 'text',
-					'text' => $event['source']['groupId'];
+					'text' => $event['source']['groupId']
 				];
 			}
 		
