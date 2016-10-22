@@ -65,7 +65,6 @@ Hope you enjoy :)'
 					$text = rand($r[0],$r[1]);
 				}
 				else $text = rand(0,1);
-				$text = substr(strstr($text," "), 1);
 				$messages = [
 					'type' => 'text',
 					'text' => "Random result: ".$text
