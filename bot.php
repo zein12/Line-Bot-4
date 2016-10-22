@@ -46,7 +46,7 @@ if (!is_null($events['events'])) {
 				$messages = [
 					'type' => 'text',
 					'text' => 'Gain Bot commands:
-				===============
+===============
 1. search ... page(optional) 1,2,3 -> to search for websites
 2. img ... page(optional) 1,2,3 -> to search images
 3. th ... -> to translate a word/sentence to Thai
@@ -54,7 +54,7 @@ if (!is_null($events['events'])) {
 5. shorten [url] -> to create Google short link
 6. rand [min-max](optional) -> to random number from .. to ..
 7. help -> to see all the commands
-				===============
+===============
 Hope you enjoy :)'
 				];						
 			}
@@ -64,10 +64,10 @@ Hope you enjoy :)'
 					$r = explode("-",$text);
 					$text = rand($r[0],$r[1]);
 				}
-				else $text = rand(0,1);
+				else $text = rand(0,1) == true ? 'True' : 'False';
 				$messages = [
 					'type' => 'text',
-					'text' => "Random result: ".$text
+					'text' => $text
 				];			
 			}			
 			else if($cmd[0] == "shorten") {
