@@ -73,8 +73,8 @@ Hope you enjoy :)'
 					$offset = $matches[1];
 					$text = substr($text, 0, strpos($text, "offset"));
 				}
-				$q = urlencode($text);
 				else $offset = 0;
+				$q = urlencode($text);				
 				$url = 'https://api.cognitive.microsoft.com/bing/v5.0/images/search/?q='.$q.'&count='.$count."&offset=".$offset;
 				$headers = array('Ocp-Apim-Subscription-Key: ' . $key);
 				$ch = curl_init();
@@ -121,8 +121,8 @@ Hope you enjoy :)'
 					$offset = $matches[1];
 					$text = substr($text, 0, strpos($text, "offset"));
 				}
-				$q = urlencode($text);
 				else $offset = 0;
+				$q = urlencode($text);				
 				$url = 'https://api.cognitive.microsoft.com/bing/v5.0/search/?q='.$q.'&count='.$count."&offset=".$offset;
 				$headers = array('Ocp-Apim-Subscription-Key: ' . $key);
 				$ch = curl_init();
