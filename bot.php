@@ -42,10 +42,11 @@ if (!is_null($events['events'])) {
 			
 			$cmd = explode(" ",trim($text));
 			$cmd[0] = strtolower($cmd[0]);
-			if($text == "s") {
+			if($cmd[0] == "shorten") {
+				$text = substr(strstr($text," "), 1);
 				$messages = [
 					'type' => 'text',
-					'text' => shortenURL("http://www.osk130.com/gain")
+					'text' => shortenURL($text)
 				];			
 			}
 			else if($cmd[0] == "img") {
