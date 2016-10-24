@@ -86,7 +86,7 @@ Hope you enjoy :)'
 					if(strpos($text, "count") > strpos($text, "page")) {
 						if (strpos($text, "count") !== FALSE) { 
 							preg_match('/count\s*(\d+)/', $text, $matches);
-							$count = $matches[1]
+							$count = $matches[1];
 							$text = substr($text, 0, strpos($text, "count"));
 						}
 						if (strpos($text, "page") !== FALSE) { 
@@ -103,7 +103,7 @@ Hope you enjoy :)'
 						}	
 						if (strpos($text, "count") !== FALSE) { 
 							preg_match('/count\s*(\d+)/', $text, $matches);
-							$count = $matches[1]
+							$count = $matches[1];
 							$text = substr($text, 0, strpos($text, "count"));
 						}						
 					}
