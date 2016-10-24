@@ -277,7 +277,7 @@ Hope you enjoy :)'
 				$ch = curl_init($url);
 				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, {});
+				curl_setopt($ch, CURLOPT_POSTFIELDS, "");
 				curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 				$result = curl_exec($ch);
