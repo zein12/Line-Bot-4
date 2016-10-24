@@ -127,6 +127,10 @@ Hope you enjoy :)'
 					[
 						'type' => 'text',
 						'text' => 'Image Search: '.$text			
+					],
+					[
+						'type' => 'text',
+						'text' => "See more: ".shortenURL($websearch)					
 					]
 				];
 				foreach (array_reverse($data['value']) as $value) {
@@ -143,12 +147,7 @@ Hope you enjoy :)'
 						'text' => $picname//."\n".$contenturl			
 					];
 					array_push($messages,$a,$b);
-				}	
-				$b = [
-					'type' => 'text',
-					'text' => "See more: ".shortenURL($websearch)					
-				];
-				array_push($messages,$b);
+				}
 			}
 			else if($cmd[0] == "search") {
 				$text = substr(strstr($text," "), 1);
