@@ -67,14 +67,14 @@ Hope you enjoy :)'
 					if($i > 0){
 						$result = trim(str_replace("\n", ' - ', $value->subpod->plaintext));
 						if($i == 1 && empty($result)) $ans = 'No result.';
-						else if($i == 1) $ans = str_replace('\:0e3f','฿',$result);
-						else $ans = $ans."\n".str_replace('\:0e3f','฿',$result);
+						else if($i == 1) $ans = $result;
+						else $ans = $ans."\n".$result;
 					}
-					else $i++;
+					$i++;
 				}
 				$messages = [
 					'type' => 'text',
-					'text' => $ans
+					'text' => str_replace('\:0e3f','฿',$ans)
 				];
 				echo $ans;
 			}
