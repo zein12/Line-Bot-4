@@ -84,6 +84,7 @@ Hope you enjoy :)'
 				$offset = 0;
 				if (strpos($text, "page") !== FALSE) { 
 					preg_match('/page\s*(\d+)/', $text, $matches);
+					$page = $matches[1];
 					$offset = ($matches[1]-1)*$count;
 					$text = substr($text, 0, strpos($text, "page"));
 				}				
@@ -94,7 +95,7 @@ Hope you enjoy :)'
 					if($count > 4) $count = 4; // line msg max at 5
 				}
 				if(strpos($text, "count") !== FALSE && strpos($text, "page") !== FALSE) {
-					$offset = ($matches[1]-1)*$count;
+					$offset = ($page-1)*$count;
 				}
 				$q = urlencode($text);				
 				$url = 'https://api.cognitive.microsoft.com/bing/v5.0/images/search/?q='.$q.'&count='.$count."&offset=".$offset;
@@ -115,7 +116,7 @@ Hope you enjoy :)'
 				$messages = [
 					[
 						'type' => 'text',
-						'text' => 'Image Search: '.$text.'\n See more: '.shortenURL($websearch)
+						'text' => 'Image Search: '.$text."\n See more: ".shortenURL($websearch)
 					]
 				];
 				foreach ($data['value'] as $value) {
