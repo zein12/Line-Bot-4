@@ -48,7 +48,7 @@ if (!is_null($events['events'])) {
 					'text' => 'Gain Bot commands:
 ===============
 1. search ... page(optional) 1,2,3 -> to search for websites
-2. img ... count(optional) 1,2,3 page(optional) 1,2,3 -> to search images
+2. img ... count 1-4 page(optional) 1,2,3 -> to search images
 3. th ... -> to translate a word/sentence to Thai
 4. en ... -> to translate a word/sentence to English
 5. shorten [url] -> to create Google short link
@@ -57,6 +57,22 @@ if (!is_null($events['events'])) {
 ===============
 Hope you enjoy :)'
 				];						
+			}
+			else if($text[0] == ":") {
+				$appid = 'QGUKYG-K5W2LKL6T6';
+				$text = substr($text, 1);
+	 			$url = "http://api.wolframalpha.com/v2/query?appid={$this->appid}&input=" . urlencode($text);
+				$result = file_get_contents($url);
+				$result = simplexml_load_string($result);
+				$result = Str::trim(str_replace("\n", ' - ', $result->pod[1]->subpod->plaintext));
+				if(empty($result))
+					$ans = 'No result.';
+				else
+		 			$ans = $result;	
+				$messages = [
+					'type' => 'text',
+					'text' => $result
+				];		 						
 			}
 			else if($cmd[0] == "rand") {
 				$text = substr(strstr($text," "), 1);
