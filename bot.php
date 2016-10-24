@@ -64,11 +64,18 @@ Hope you enjoy :)'
 	 			$url = "https://api.wolframalpha.com/v2/query?appid=".$appid."&input=".urlencode(trim($text));
 				$result = file_get_contents($url);
 				$result = simplexml_load_string($result);
-				$result = trim(str_replace("\n", ' - ', $result->pod[1]->subpod->plaintext));
-				if(empty($result))
-					$ans = 'No result.';
-				else
-		 			$ans = str_replace('\:0e3f','฿',$result);
+				$i = 0
+				foreach ($result->pod as $value) {
+					if($i != 0){
+						$result = trim(str_replace("\n", ' - ', $value->subpod->plaintext));
+						if($i == 1 && empty($result)) $ans = 'No result.';
+						else if($i == 1) $ans = str_replace('\:0e3f','฿',$result);
+						else $ans = $ans."\n".str_replace('\:0e3f','฿',$result);
+					}
+					else {
+						$i++;				
+					}
+				}
 				$messages = [
 					'type' => 'text',
 					'text' => $ans
