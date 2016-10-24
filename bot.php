@@ -87,15 +87,16 @@ Hope you enjoy :)'
 					$page = $matches[1];
 					$offset = ($matches[1]-1)*$count;
 					$text = substr($text, 0, strpos($text, "page"));
+					$haspage = 1;
 				}				
 				if (strpos($text, "count") !== FALSE) { 
 					preg_match('/count\s*(\d+)/', $text, $matches);
 					$count = $matches[1];
-					$text = substr($text, 0, strpos($text, "count"));
 					if($count > 4) $count = 4; // line msg max at 5
-				}
-				if(strpos($text, "count") !== FALSE && strpos($text, "page") !== FALSE) {
-					$offset = ($page-1)*$count;
+					if($haspage == 1) {
+						$offset = ($page-1)*$count;
+					}					
+					$text = substr($text, 0, strpos($text, "count"));	
 				}
 				$q = urlencode($text);				
 				$url = 'https://api.cognitive.microsoft.com/bing/v5.0/images/search/?q='.$q.'&count='.$count."&offset=".$offset;
