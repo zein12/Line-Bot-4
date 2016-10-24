@@ -121,9 +121,9 @@ Hope you enjoy :)'
 					]
 				];
 				foreach ($data['value'] as $value) {
-					$previewlink = str_replace('http:','https:',$value[0]['thumbnailUrl']);
-					$imglink = str_replace('http:','https:',$value[0]['contentUrl']);
-					$picname = $value[0]['name'];
+					$previewlink = str_replace('http:','https:',$data['value'][0]['thumbnailUrl']);
+					$imglink = str_replace('http:','https:',$data['value'][0]['contentUrl']);
+					$picname = $data['value']['name'];
 					$a = [
 						"type" => "image",
 						"originalContentUrl" => $imglink,
