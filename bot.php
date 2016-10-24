@@ -29,17 +29,17 @@ function shortenURL($url) {
 	$data = json_decode($result, TRUE);
 	return $data['id'];
 }
-// if (!is_null($events['events'])) {
-// 	// Loop through each event
-// 	foreach ($events['events'] as $event) {
-// 		// Reply only when message sent is in 'text' format
-// 		if ($event['type'] == 'message' && ($event['message']['type'] == 'text' || $event['message']['type'] == 'sticker')) {
+if (!is_null($events['events'])) {
+	// Loop through each event
+	foreach ($events['events'] as $event) {
+		// Reply only when message sent is in 'text' format
+		if ($event['type'] == 'message' && ($event['message']['type'] == 'text' || $event['message']['type'] == 'sticker')) {
 			// Get text sent
-//			$text = $event['message']['text'];
-//			$uid = $event['source']['userId'];
+			$text = $event['message']['text'];
+			$uid = $event['source']['userId'];
 			// Get replyToken
-//			$replyToken = $event['replyToken'];
-			$text = $_GET['text'];
+			$replyToken = $event['replyToken'];
+			//$text = $_GET['text'];
 			$cmd = explode(" ",trim($text));
 			$cmd[0] = strtolower($cmd[0]);
 			if(strtolower($text) == "help") {
@@ -71,9 +71,8 @@ Hope you enjoy :)'
 		 			$ans = $result;	
 				$messages = [
 					'type' => 'text',
-					'text' => $result
-				];		 	
-				echo $result:					
+					'text' => $ans
+				];		 						
 			}
 			else if($cmd[0] == "rand") {
 				$text = substr(strstr($text," "), 1);
@@ -271,21 +270,21 @@ Hope you enjoy :)'
 					'messages' => [$messages],
 				];				
 			}
-			// $post = json_encode($data);
-			// $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+			$post = json_encode($data);
+			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
-			// $ch = curl_init($url);
-			// curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-			// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			// curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-			// curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-			// curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-			// $result = curl_exec($ch);
-			// curl_close($ch);
+			$ch = curl_init($url);
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+			$result = curl_exec($ch);
+			curl_close($ch);
 
-			// echo $result . "\r\n";
-// 		}
-// 	}
-// }
+			echo $result . "\r\n";
+		}
+	}
+}
 echo "OK";
 ?>
