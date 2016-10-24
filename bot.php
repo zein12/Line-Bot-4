@@ -62,7 +62,7 @@ Hope you enjoy :)'
 	 			$url = "https://api.wolframalpha.com/v2/query?appid=".$appid."&input=".urlencode(trim($text));
 				$result = file_get_contents($url);
 				$result = simplexml_load_string($result);
-				$i = 0
+				$i = 0;
 				foreach ($result->pod as $value) {
 					if($i > 0){
 						$result = trim(str_replace("\n", ' - ', $value->subpod->plaintext));
