@@ -48,7 +48,7 @@ if (!is_null($events['events'])) {
 					'text' => 'Gain Bot commands:
 ===============
 1. search ... page(optional) 1,2,3 -> to search for websites
-2. img ... page(optional) 1,2,3 -> to search images
+2. img ... count(optional) 1,2,3 page(optional) 1,2,3 -> to search images
 3. th ... -> to translate a word/sentence to Thai
 4. en ... -> to translate a word/sentence to English
 5. shorten [url] -> to create Google short link
@@ -86,7 +86,7 @@ Hope you enjoy :)'
 					if(strpos($text, "count") > strpos($text, "page")) {
 						if (strpos($text, "count") !== FALSE) { 
 							preg_match('/count\s*(\d+)/', $text, $matches);
-							$count = ($matches[1]-1)*$count;
+							$count = $matches[1]
 							$text = substr($text, 0, strpos($text, "count"));
 						}
 						if (strpos($text, "page") !== FALSE) { 
@@ -103,7 +103,7 @@ Hope you enjoy :)'
 						}	
 						if (strpos($text, "count") !== FALSE) { 
 							preg_match('/count\s*(\d+)/', $text, $matches);
-							$count = ($matches[1]-1)*$count;
+							$count = $matches[1]
 							$text = substr($text, 0, strpos($text, "count"));
 						}						
 					}
