@@ -103,7 +103,8 @@ Hope you enjoy :)'
 							preg_match('/count\s*(\d+)/', $text, $matches);
 							$count = ($matches[1]-1)*$count;
 							$text = substr($text, 0, strpos($text, "count"));
-						}											
+						}
+						else $count = 1									
 					}
 				}
 				else $offset = 0;
