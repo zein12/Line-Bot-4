@@ -29,17 +29,17 @@ function shortenURL($url) {
 	$data = json_decode($result, TRUE);
 	return $data['id'];
 }
-// if (!is_null($events['events'])) {
-// 	// Loop through each event
-// 	foreach ($events['events'] as $event) {
-// 		// Reply only when message sent is in 'text' format
-// 		if ($event['type'] == 'message' && ($event['message']['type'] == 'text' || $event['message']['type'] == 'sticker')) {
+if (!is_null($events['events'])) {
+	// Loop through each event
+	foreach ($events['events'] as $event) {
+		// Reply only when message sent is in 'text' format
+		if ($event['type'] == 'message' && ($event['message']['type'] == 'text' || $event['message']['type'] == 'sticker')) {
 			// Get text sent
-//			$text = $event['message']['text'];
-//			$uid = $event['source']['userId'];
+			$text = $event['message']['text'];
+			$uid = $event['source']['userId'];
 			// Get replyToken
-//			$replyToken = $event['replyToken'];
-			$text = $_GET['text'];
+			$replyToken = $event['replyToken'];
+			//$text = $_GET['text'];
 			$cmd = explode(" ",trim($text));
 			$cmd[0] = strtolower($cmd[0]);
 			if(strtolower($text) == "help") {
@@ -91,6 +91,7 @@ Hope you enjoy :)'
 					preg_match('/count\s*(\d+)/', $text, $matches);
 					$count = $matches[1];
 					$text = substr($text, 0, strpos($text, "count"));
+					if($count > 4) $count = 4; // line msg max at 5
 				}
 				if(strpos($text, "count") !== FALSE && strpos($text, "page") !== FALSE) {
 					$offset = ($matches[1]-1)*$count;
@@ -115,12 +116,15 @@ Hope you enjoy :)'
 					[
 						'type' => 'text',
 						'text' => 'Image Search: '.$text			
-					],
-					[
-						'type' => 'text',
-						'text' => "See more: ".shortenURL($websearch)					
 					]
 				];
+				if($count == 1) {
+					$a = [
+						'type' => 'text',
+						'text' => "See more: ".shortenURL($websearch)					
+					];
+					array_push($messages,$a);
+				}
 				foreach ($data['value'] as $value) {
 					$previewlink = str_replace('http:','https:',$value['thumbnailUrl']);
 					$imglink = str_replace('http:','https:',$value['contentUrl']);
@@ -130,17 +134,20 @@ Hope you enjoy :)'
 						"originalContentUrl" => $imglink,
 						"previewImageUrl" => $previewlink
 					];
-					$b = [
-						'type' => 'text',
-						'text' => $picname//."\n".$contenturl			
-					];
-					array_push($messages,$a,$b);
+					array_push($messages,$a);
+					if($count == 1) {
+						$b = [
+							'type' => 'text',
+							'text' => $picname//."\n".$contenturl			
+						];
+						array_push($messages,$b);
+					}
 				}
 			}
 			else if($cmd[0] == "search") {
 				$text = substr(strstr($text," "), 1);
 				$key = '071e93df3d824296a6b86c0e2b85944b';	
-				$count = 3;
+				$count = 3; // line msg size maximum at 5
 				if (strpos($text, "page") !== FALSE) { 
 					preg_match('/page\s*(\d+)/', $text, $matches);
 					$offset = ($matches[1]-1)*$count;
@@ -265,8 +272,8 @@ Hope you enjoy :)'
 			curl_close($ch);
 
 			echo $result . "\r\n";
-// 		}
-// 	}
-// }
+		}
+	}
+}
 echo "OK";
 ?>
