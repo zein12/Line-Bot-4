@@ -108,7 +108,7 @@ Hope you enjoy :)'
 				curl_close($ch);
 	//			print_r($result);
 				$data = json_decode($result, TRUE);
-				echo $data;
+				echo $result;
 				//$contenturl = $data['value'][0]['hostPageUrl'];
 				$websearch = $data['webSearchUrl'];	
 				$messages = [
