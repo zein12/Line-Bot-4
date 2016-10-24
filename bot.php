@@ -68,7 +68,7 @@ Hope you enjoy :)'
 				if(empty($result))
 					$ans = 'No result.';
 				else
-		 			$ans = $result;	
+		 			$ans = strip_tags(html_entity_decode($result));	
 				$messages = [
 					'type' => 'text',
 					'text' => $ans
