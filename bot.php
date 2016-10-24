@@ -80,6 +80,8 @@ Hope you enjoy :)'
 			else if($cmd[0] == "img") {
 				$text = substr(strstr($text," "), 1);
 				$key = '071e93df3d824296a6b86c0e2b85944b';
+				$count = 1;
+				$offset = 0;
 				if(strpos($text, "count") !== FALSE || strpos($text, "page") !== FALSE) {
 					if(strpos($text, "count") > strpos($text, "page")) {
 						if (strpos($text, "count") !== FALSE) { 
@@ -103,11 +105,9 @@ Hope you enjoy :)'
 							preg_match('/count\s*(\d+)/', $text, $matches);
 							$count = ($matches[1]-1)*$count;
 							$text = substr($text, 0, strpos($text, "count"));
-						}
-						else $count = 1									
+						}						
 					}
 				}
-				else $offset = 0;
 				$q = urlencode($text);				
 				$url = 'https://api.cognitive.microsoft.com/bing/v5.0/images/search/?q='.$q.'&count='.$count."&offset=".$offset;
 				$headers = array('Ocp-Apim-Subscription-Key: ' . $key);
