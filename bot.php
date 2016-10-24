@@ -121,30 +121,34 @@ Hope you enjoy :)'
 				curl_close($ch);
 	//			print_r($result);
 				$data = json_decode($result, TRUE);
-				$previewlink = str_replace('http:','https:',$data['value'][0]['thumbnailUrl']);
-				$imglink = str_replace('http:','https:',$data['value'][0]['contentUrl']);
-				$picname = $data['value'][0]['name'];
 				//$contenturl = $data['value'][0]['hostPageUrl'];
 				$websearch = $data['webSearchUrl'];
 				$messages = [
 					[
 						'type' => 'text',
 						'text' => 'Image Search: '.$text			
-					],					
-					[
+					]
+				];
+				foreach (array_reverse($data['value']) as $value) {
+					$previewlink = str_replace('http:','https:',$data['value'][0]['thumbnailUrl']);
+					$imglink = str_replace('http:','https:',$data['value'][0]['contentUrl']);
+					$picname = $data['value'][0]['name'];
+					$a = [
 						"type" => "image",
 						"originalContentUrl" => $imglink,
 						"previewImageUrl" => $previewlink
-					],
-					[
+					];
+					$b = [
 						'type' => 'text',
 						'text' => $picname//."\n".$contenturl			
-					],
-					[
-						'type' => 'text',
-						'text' => "See more: ".shortenURL($websearch)					
-					]
-				];				
+					];
+					array_push($messages,$a,$b);
+				}	
+				$b = [
+					'type' => 'text',
+					'text' => "See more: ".shortenURL($websearch)					
+				];
+				array_push($messages,$b);
 			}
 			else if($cmd[0] == "search") {
 				$text = substr(strstr($text," "), 1);
