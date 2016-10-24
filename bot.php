@@ -281,7 +281,7 @@ Hope you enjoy :)'
 				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 				$result = curl_exec($ch);
 				curl_close($ch);
-				exit("Leave room: ".$roomId);
+				//exit("Leave room: ".$roomId);
 				$messages = [
 						'type' => 'text',
 						'text' => $result
