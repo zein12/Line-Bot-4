@@ -51,7 +51,7 @@ if (!is_null($events['events'])) {
 4. en ... -> to translate a word/sentence to English
 5. shorten [url] -> to create Google short link
 6. rand [min-max](optional) -> to random number from .. to ..
-7. :... -> to get smart answer
+7. : ... -> to get smart answer
 8. help -> to see all the commands
 ===============
 Hope you enjoy :)'
@@ -240,23 +240,25 @@ Hope you enjoy :)'
 					'text' => $ans
 				];				
 			}	
-			else if ($event['message']['type'] == 'sticker') {
-				$messages = [
-					"type" => "sticker",
-					"packageId" => "1",
-					"stickerId" => rand(1,10)
-				];			
-			}
 			else if($event['source']['type'] == 'user'){
-				$input = str_replace("\\","", $text);
-				$input = urlencode($input);
-				$url = "http://www.pandorabots.com/pandora/talk-xml?botid=dd39ca224e3476a6&custid=".$uid."&input=".$input;
-				$ans = get_content("that",file_get_contents($url));
-				$ans = strip_tags(html_entity_decode($ans));
-				$messages = [
-					'type' => 'text',
-					'text' => $ans
-				];
+				if ($event['message']['type'] == 'sticker') {
+					$messages = [
+						"type" => "sticker",
+						"packageId" => "1",
+						"stickerId" => rand(1,10)
+					];			
+				}
+				else {
+					$input = str_replace("\\","", $text);
+					$input = urlencode($input);
+					$url = "http://www.pandorabots.com/pandora/talk-xml?botid=dd39ca224e3476a6&custid=".$uid."&input=".$input;
+					$ans = get_content("that",file_get_contents($url));
+					$ans = strip_tags(html_entity_decode($ans));
+					$messages = [
+						'type' => 'text',
+						'text' => $ans
+					];
+				}
 			}
 			else exit();
 		
