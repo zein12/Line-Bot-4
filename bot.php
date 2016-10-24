@@ -61,7 +61,7 @@ Hope you enjoy :)'
 			else if($text[0] == ":") {
 				$appid = 'QGUKYG-K5W2LKL6T6';
 				$text = substr($text, 1);
-	 			$url = "http://api.wolframalpha.com/v2/query?appid={$this->appid}&input=" . urlencode($text);
+	 			$url = "http://api.wolframalpha.com/v2/query?appid=".$appid."&input=".urlencode(trim($text));
 				$result = file_get_contents($url);
 				$result = simplexml_load_string($result);
 				$result = Str::trim(str_replace("\n", ' - ', $result->pod[1]->subpod->plaintext));
