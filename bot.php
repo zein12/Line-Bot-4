@@ -29,17 +29,17 @@ function shortenURL($url) {
 	$data = json_decode($result, TRUE);
 	return $data['id'];
 }
-if (!is_null($events['events'])) {
-	// Loop through each event
-	foreach ($events['events'] as $event) {
-		// Reply only when message sent is in 'text' format
-		if ($event['type'] == 'message' && ($event['message']['type'] == 'text' || $event['message']['type'] == 'sticker')) {
+// if (!is_null($events['events'])) {
+// 	// Loop through each event
+// 	foreach ($events['events'] as $event) {
+// 		// Reply only when message sent is in 'text' format
+// 		if ($event['type'] == 'message' && ($event['message']['type'] == 'text' || $event['message']['type'] == 'sticker')) {
 			// Get text sent
-			$text = $event['message']['text'];
-			$uid = $event['source']['userId'];
+//			$text = $event['message']['text'];
+//			$uid = $event['source']['userId'];
 			// Get replyToken
-			$replyToken = $event['replyToken'];
-			
+//			$replyToken = $event['replyToken'];
+			$text = $_GET['text'];
 			$cmd = explode(" ",trim($text));
 			$cmd[0] = strtolower($cmd[0]);
 			if(strtolower($text) == "help") {
@@ -108,6 +108,7 @@ Hope you enjoy :)'
 				curl_close($ch);
 	//			print_r($result);
 				$data = json_decode($result, TRUE);
+				echo $data;
 				//$contenturl = $data['value'][0]['hostPageUrl'];
 				$websearch = $data['webSearchUrl'];	
 				$messages = [
@@ -121,9 +122,9 @@ Hope you enjoy :)'
 					]
 				];
 				foreach ($data['value'] as $value) {
-					$previewlink = str_replace('http:','https:',$data['value'][0]['thumbnailUrl']);
-					$imglink = str_replace('http:','https:',$data['value'][0]['contentUrl']);
-					$picname = $data['value']['name'];
+					$previewlink = str_replace('http:','https:',$value['thumbnailUrl']);
+					$imglink = str_replace('http:','https:',$value['contentUrl']);
+					$picname = $value['name'];
 					$a = [
 						"type" => "image",
 						"originalContentUrl" => $imglink,
@@ -264,8 +265,8 @@ Hope you enjoy :)'
 			curl_close($ch);
 
 			echo $result . "\r\n";
-		}
-	}
-}
+// 		}
+// 	}
+// }
 echo "OK";
 ?>
