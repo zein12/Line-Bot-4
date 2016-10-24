@@ -115,16 +115,9 @@ Hope you enjoy :)'
 				$messages = [
 					[
 						'type' => 'text',
-						'text' => 'Image Search: '.$text			
+						'text' => 'Image Search: '.$text.'\n See more: '.shortenURL($websearch)
 					]
 				];
-				if($count == 1) {
-					$a = [
-						'type' => 'text',
-						'text' => "See more: ".shortenURL($websearch)					
-					];
-					array_push($messages,$a);
-				}
 				foreach ($data['value'] as $value) {
 					$previewlink = str_replace('http:','https:',$value['thumbnailUrl']);
 					$imglink = str_replace('http:','https:',$value['contentUrl']);
