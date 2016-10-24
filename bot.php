@@ -114,7 +114,7 @@ Hope you enjoy :)'
 					],
 					[
 						'type' => 'text',
-						'text' => $result
+						'text' => $url
 						//'text' => "See more: ".shortenURL($websearch)					
 					]
 				];
