@@ -51,7 +51,8 @@ if (!is_null($events['events'])) {
 4. en ... -> to translate a word/sentence to English
 5. shorten [url] -> to create Google short link
 6. rand [min-max](optional) -> to random number from .. to ..
-7. help -> to see all the commands
+7. :... -> to get smart answer
+8. help -> to see all the commands
 ===============
 Hope you enjoy :)'
 				];						
@@ -66,12 +67,12 @@ Hope you enjoy :)'
 				foreach ($result->pod as $value) {
 					if($i > 0){
 						$result = trim(str_replace("\n", ' - ', $value->subpod->plaintext));
-						if($i == 1 && empty($result)) $ans = 'No result.';
-						else if($i == 1) $ans = $result;
+						if($i == 1) $ans = $result;
 						else $ans = $ans."\n".$result;
 					}
 					$i++;
 				}
+				if(empty($ans)) $ans = 'No result.';
 				$messages = [
 					'type' => 'text',
 					'text' => str_replace('\:0e3f','฿',$ans)
