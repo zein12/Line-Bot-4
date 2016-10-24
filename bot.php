@@ -57,7 +57,7 @@ if (!is_null($events['events'])) {
 Hope you enjoy :)'
 				];						
 			}
-			else if($text[0] == ":") {
+			else if($text[0].$text[1] == ": ") {
 				$appid = 'QGUKYG-K5W2LKL6T6';
 				$text = substr($text, 1);
 	 			$url = "https://api.wolframalpha.com/v2/query?appid=".$appid."&input=".urlencode(trim($text));
@@ -137,10 +137,12 @@ Hope you enjoy :)'
 				$messages = [
 					[
 						'type' => 'text',
-						'text' => 'Image Search: '.$text."\n See more: ".shortenURL($websearch)
+						'text' => 'Image Search: '.$text."\nSee more: ".shortenURL($websearch)
 					]
 				];
+				$foundresult = 0;
 				foreach ($data['value'] as $value) {
+					$foundresult = 1;
 					$previewlink = str_replace('http:','https:',$value['thumbnailUrl']);
 					$imglink = str_replace('http:','https:',$value['contentUrl']);
 					$picname = $value['name'];
@@ -157,6 +159,13 @@ Hope you enjoy :)'
 						];
 						array_push($messages,$b);
 					}
+				}
+				if($foundresult == 0) {
+					$b = [
+						'type' => 'text',
+						'text' => 'Result: Not found.'			
+					];
+					array_push($messages,$b);
 				}
 			}
 			else if($cmd[0] == "search") {
