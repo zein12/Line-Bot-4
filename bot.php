@@ -121,9 +121,9 @@ Hope you enjoy :)'
 					]
 				];
 				foreach ($data['value'] as $value) {
-					$previewlink = str_replace('http:','https:',$value['thumbnailUrl']);
-					$imglink = str_replace('http:','https:',$value['contentUrl']);
-					$picname = $value['name'];
+					$previewlink = str_replace('http:','https:',$value[0]['thumbnailUrl']);
+					$imglink = str_replace('http:','https:',$value[0]['contentUrl']);
+					$picname = $value[0]['name'];
 					$a = [
 						"type" => "image",
 						"originalContentUrl" => $imglink,
@@ -180,7 +180,7 @@ Hope you enjoy :)'
 					$snippet = $value['snippet'];
 					$a = [
 						'type' => 'text',
-						'text' => $i.".) ".$name."\n".$snippet."\n".shortenURL($contenturl)			
+						'text' => $i.".) ".$name."\n".$snippet."\n".shortenURL($contenturl)
 					];
 					array_push($messages,$a);	
 					$i--;
