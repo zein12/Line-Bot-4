@@ -52,7 +52,8 @@ if (!is_null($events['events'])) {
 5. shorten [url] -> to create Google short link
 6. rand [min-max](optional) -> to random number from .. to ..
 7. : ... -> to get smart answer
-8. help -> to see all the commands
+8. kickbot -> to kick the bot out of the room
+9. help -> to see all the commands
 ===============
 Hope you enjoy :)'
 				];						
@@ -269,18 +270,22 @@ Hope you enjoy :)'
 					];
 				}
 			}
-			else if($event['source']['type'] == 'room' && $text == 'kickbot') {
+			else if($event['source']['type'] == 'room' && strtolower($text) == 'kickbot') {
 				$roomId = $event['source']['roomId'];
-				$url = 'https://api.line.me/v2/bot/room/'.$roomId.'/leave';
-				$headers = array('Authorization: Bearer ' . $access_token);
-				$ch = curl_init($url);
-				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-				$result = curl_exec($ch);
-				curl_close($ch);
-				exit("Leave room: ".$roomId);
+				// $url = 'https://api.line.me/v2/bot/room/'.$roomId.'/leave';
+				// $headers = array('Authorization: Bearer ' . $access_token);
+				// $ch = curl_init($url);
+				// curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+				// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+				// curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+				// curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+				// $result = curl_exec($ch);
+				// curl_close($ch);
+				// exit("Leave room: ".$roomId);
+				$messages = [
+						'type' => 'text',
+						'text' => $roomId
+				];
 			}
 			else exit();
 		
