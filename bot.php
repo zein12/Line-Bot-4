@@ -91,7 +91,10 @@ Hope you enjoy :)'
 					preg_match('/count\s*(\d+)/', $text, $matches);
 					$count = $matches[1];
 					$text = substr($text, 0, strpos($text, "count"));
-				}			
+				}
+				if(strpos($text, "count") !== FALSE && strpos($text, "page") !== FALSE) {
+					$offset = ($matches[1]-1)*$count;
+				}
 				$q = urlencode($text);				
 				$url = 'https://api.cognitive.microsoft.com/bing/v5.0/images/search/?q='.$q.'&count='.$count."&offset=".$offset;
 				$headers = array('Ocp-Apim-Subscription-Key: ' . $key);
@@ -107,6 +110,23 @@ Hope you enjoy :)'
 				$data = json_decode($result, TRUE);
 				//$contenturl = $data['value'][0]['hostPageUrl'];
 				$websearch = $data['webSearchUrl'];
+				$abc = ''
+				foreach ($data['value'] as $value) {
+					$previewlink = str_replace('http:','https:',$value['thumbnailUrl']);
+					$imglink = str_replace('http:','https:',$value['contentUrl']);
+					$picname = $value['name'];
+					$a = [
+						"type" => "image",
+						"originalContentUrl" => $imglink,
+						"previewImageUrl" => $previewlink
+					];
+					$b = [
+						'type' => 'text',
+						'text' => $picname//."\n".$contenturl			
+					];
+					array_push($messages,$a,$b);
+					$abc = $abc.' / '.$previewlink;
+				}				
 				$messages = [
 					[
 						'type' => 'text',
@@ -114,25 +134,11 @@ Hope you enjoy :)'
 					],
 					[
 						'type' => 'text',
-						'text' => $url
+						'text' => $abc
 						//'text' => "See more: ".shortenURL($websearch)					
 					]
 				];
-				// foreach (array_reverse($data['value']) as $value) {
-				// 	$previewlink = str_replace('http:','https:',$value['thumbnailUrl']);
-				// 	$imglink = str_replace('http:','https:',$value['contentUrl']);
-				// 	$picname = $value['name'];
-				// 	$a = [
-				// 		"type" => "image",
-				// 		"originalContentUrl" => $imglink,
-				// 		"previewImageUrl" => $previewlink
-				// 	];
-				// 	$b = [
-				// 		'type' => 'text',
-				// 		'text' => $picname//."\n".$contenturl			
-				// 	];
-				// 	array_push($messages,$a,$b);
-				// }
+
 			}
 			else if($cmd[0] == "search") {
 				$text = substr(strstr($text," "), 1);
