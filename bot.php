@@ -80,11 +80,31 @@ Hope you enjoy :)'
 			else if($cmd[0] == "img") {
 				$text = substr(strstr($text," "), 1);
 				$key = '071e93df3d824296a6b86c0e2b85944b';
-				$count = 1;
-				if (strpos($text, "page") !== FALSE) { 
-					preg_match('/page\s*(\d+)/', $text, $matches);
-					$offset = ($matches[1]-1)*$count;
-					$text = substr($text, 0, strpos($text, "page"));
+				if(strpos($text, "count") !== FALSE || strpos($text, "page") !== FALSE) {
+					if(strpos($text, "count") > strpos($text, "page")) {
+						if (strpos($text, "count") !== FALSE) { 
+							preg_match('/count\s*(\d+)/', $text, $matches);
+							$count = ($matches[1]-1)*$count;
+							$text = substr($text, 0, strpos($text, "count"));
+						}
+						if (strpos($text, "page") !== FALSE) { 
+							preg_match('/page\s*(\d+)/', $text, $matches);
+							$offset = ($matches[1]-1)*$count;
+							$text = substr($text, 0, strpos($text, "page"));
+						}								
+					}
+					else {
+						if (strpos($text, "page") !== FALSE) { 
+							preg_match('/page\s*(\d+)/', $text, $matches);
+							$offset = ($matches[1]-1)*$count;
+							$text = substr($text, 0, strpos($text, "page"));
+						}	
+						if (strpos($text, "count") !== FALSE) { 
+							preg_match('/count\s*(\d+)/', $text, $matches);
+							$count = ($matches[1]-1)*$count;
+							$text = substr($text, 0, strpos($text, "count"));
+						}											
+					}
 				}
 				else $offset = 0;
 				$q = urlencode($text);				
