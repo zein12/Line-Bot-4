@@ -109,24 +109,7 @@ Hope you enjoy :)'
 	//			print_r($result);
 				$data = json_decode($result, TRUE);
 				//$contenturl = $data['value'][0]['hostPageUrl'];
-				$websearch = $data['webSearchUrl'];
-				$abc = '';
-				foreach ($data['value'] as $value) {
-					$previewlink = str_replace('http:','https:',$value['thumbnailUrl']);
-					$imglink = str_replace('http:','https:',$value['contentUrl']);
-					$picname = $value['name'];
-					// $a = [
-					// 	"type" => "image",
-					// 	"originalContentUrl" => $imglink,
-					// 	"previewImageUrl" => $previewlink
-					// ];
-					// $b = [
-					// 	'type' => 'text',
-					// 	'text' => $picname//."\n".$contenturl			
-					// ];
-					// array_push($messages,$a,$b);
-					$abc = $abc.' / '.$previewlink;
-				}				
+				$websearch = $data['webSearchUrl'];	
 				$messages = [
 					[
 						'type' => 'text',
@@ -134,11 +117,24 @@ Hope you enjoy :)'
 					],
 					[
 						'type' => 'text',
-						'text' => $abc
-						//'text' => "See more: ".shortenURL($websearch)					
+						'text' => "See more: ".shortenURL($websearch)					
 					]
 				];
-
+				foreach ($data['value'] as $value) {
+					$previewlink = str_replace('http:','https:',$value['thumbnailUrl']);
+					$imglink = str_replace('http:','https:',$value['contentUrl']);
+					$picname = $value['name'];
+					$a = [
+						"type" => "image",
+						"originalContentUrl" => $imglink,
+						"previewImageUrl" => $previewlink
+					];
+					$b = [
+						'type' => 'text',
+						'text' => $picname//."\n".$contenturl			
+					];
+					array_push($messages,$a,$b);
+				}
 			}
 			else if($cmd[0] == "search") {
 				$text = substr(strstr($text," "), 1);
