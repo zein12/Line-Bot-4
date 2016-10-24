@@ -119,7 +119,7 @@ Hope you enjoy :)'
 					$text = substr($text, 0, strpos($text, "count"));	
 				}
 				$q = urlencode($text);				
-				$url = 'https://api.cognitive.microsoft.com/bing/v5.0/images/search/?q='.$q.'&count='.$count."&offset=".$offset;
+				$url = 'https://api.cognitive.microsoft.com/bing/v5.0/images/search/?q='.$q.'&count='.$count."&offset=".$offset."&safeSearch=Off";
 				$headers = array('Ocp-Apim-Subscription-Key: ' . $key);
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, $url);
