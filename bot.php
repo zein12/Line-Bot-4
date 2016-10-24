@@ -110,7 +110,7 @@ Hope you enjoy :)'
 				$data = json_decode($result, TRUE);
 				//$contenturl = $data['value'][0]['hostPageUrl'];
 				$websearch = $data['webSearchUrl'];
-				$abc = ''
+				$abc = '';
 				foreach ($data['value'] as $value) {
 					$previewlink = str_replace('http:','https:',$value['thumbnailUrl']);
 					$imglink = str_replace('http:','https:',$value['contentUrl']);
