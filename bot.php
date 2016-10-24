@@ -82,16 +82,16 @@ Hope you enjoy :)'
 				$key = '071e93df3d824296a6b86c0e2b85944b';
 				$count = 1;
 				$offset = 0;
-				if (strpos($text, "count") !== FALSE) { 
-					preg_match('/count\s*(\d+)/', $text, $matches);
-					$count = $matches[1];
-					$text = substr($text, 0, strpos($text, "count"));
-				}					
 				if (strpos($text, "page") !== FALSE) { 
 					preg_match('/page\s*(\d+)/', $text, $matches);
 					$offset = ($matches[1]-1)*$count;
 					$text = substr($text, 0, strpos($text, "page"));
 				}				
+				if (strpos($text, "count") !== FALSE) { 
+					preg_match('/count\s*(\d+)/', $text, $matches);
+					$count = $matches[1];
+					$text = substr($text, 0, strpos($text, "count"));
+				}			
 				$q = urlencode($text);				
 				$url = 'https://api.cognitive.microsoft.com/bing/v5.0/images/search/?q='.$q.'&count='.$count."&offset=".$offset;
 				$headers = array('Ocp-Apim-Subscription-Key: ' . $key);
@@ -114,24 +114,25 @@ Hope you enjoy :)'
 					],
 					[
 						'type' => 'text',
-						'text' => "See more: ".shortenURL($websearch)					
+						'text' => $result
+						//'text' => "See more: ".shortenURL($websearch)					
 					]
 				];
-				foreach (array_reverse($data['value']) as $value) {
-					$previewlink = str_replace('http:','https:',$value['thumbnailUrl']);
-					$imglink = str_replace('http:','https:',$value['contentUrl']);
-					$picname = $value['name'];
-					$a = [
-						"type" => "image",
-						"originalContentUrl" => $imglink,
-						"previewImageUrl" => $previewlink
-					];
-					$b = [
-						'type' => 'text',
-						'text' => $picname//."\n".$contenturl			
-					];
-					array_push($messages,$a,$b);
-				}
+				// foreach (array_reverse($data['value']) as $value) {
+				// 	$previewlink = str_replace('http:','https:',$value['thumbnailUrl']);
+				// 	$imglink = str_replace('http:','https:',$value['contentUrl']);
+				// 	$picname = $value['name'];
+				// 	$a = [
+				// 		"type" => "image",
+				// 		"originalContentUrl" => $imglink,
+				// 		"previewImageUrl" => $previewlink
+				// 	];
+				// 	$b = [
+				// 		'type' => 'text',
+				// 		'text' => $picname//."\n".$contenturl			
+				// 	];
+				// 	array_push($messages,$a,$b);
+				// }
 			}
 			else if($cmd[0] == "search") {
 				$text = substr(strstr($text," "), 1);
