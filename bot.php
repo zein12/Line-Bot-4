@@ -64,7 +64,7 @@ Hope you enjoy :)'
 	 			$url = "https://api.wolframalpha.com/v2/query?appid=".$appid."&input=".urlencode(trim($text));
 				$result = file_get_contents($url);
 				$result = simplexml_load_string($result);
-				$result = Str::trim(str_replace("\n", ' - ', $result->pod[1]->subpod->plaintext));
+				$result = trim(str_replace("\n", ' - ', $result->pod[1]->subpod->plaintext));
 				if(empty($result))
 					$ans = 'No result.';
 				else
