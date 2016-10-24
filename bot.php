@@ -115,16 +115,16 @@ Hope you enjoy :)'
 					$previewlink = str_replace('http:','https:',$value['thumbnailUrl']);
 					$imglink = str_replace('http:','https:',$value['contentUrl']);
 					$picname = $value['name'];
-					$a = [
-						"type" => "image",
-						"originalContentUrl" => $imglink,
-						"previewImageUrl" => $previewlink
-					];
-					$b = [
-						'type' => 'text',
-						'text' => $picname//."\n".$contenturl			
-					];
-					array_push($messages,$a,$b);
+					// $a = [
+					// 	"type" => "image",
+					// 	"originalContentUrl" => $imglink,
+					// 	"previewImageUrl" => $previewlink
+					// ];
+					// $b = [
+					// 	'type' => 'text',
+					// 	'text' => $picname//."\n".$contenturl			
+					// ];
+					// array_push($messages,$a,$b);
 					$abc = $abc.' / '.$previewlink;
 				}				
 				$messages = [
