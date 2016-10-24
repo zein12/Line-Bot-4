@@ -65,6 +65,7 @@ Hope you enjoy :)'
 				$result = file_get_contents($url);
 				$result = simplexml_load_string($result);
 				$result = trim(str_replace("\n", ' - ', $result->pod[1]->subpod->plaintext));
+				$result = mb_convert_encoding($result , 'UTF-8' , 'UTF-16LE');
 				if(empty($result))
 					$ans = 'No result.';
 				else
@@ -73,7 +74,7 @@ Hope you enjoy :)'
 					'type' => 'text',
 					'text' => $ans
 				];		
-				echo $ans; 						
+				echo $ans;
 			}
 			else if($cmd[0] == "rand") {
 				$text = substr(strstr($text," "), 1);
