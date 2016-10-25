@@ -58,7 +58,7 @@ if (!is_null($events['events'])) {
 Hope you enjoy :)'
 				];						
 			}
-			else if($text[0].$text[1] == ": ") {
+			else if($text[0] == ":" && strlen($text) > 3) {
 				$appid = 'QGUKYG-K5W2LKL6T6';
 				$text = substr($text, 1);
 	 			$url = "https://api.wolframalpha.com/v2/query?appid=".$appid."&input=".urlencode(trim($text));
