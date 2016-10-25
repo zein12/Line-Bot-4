@@ -265,12 +265,13 @@ Hope you enjoy :)'
 					"originalContentUrl" => $img,
 					"previewImageUrl" => $img
 				];		
-				foreach ($result->palette->colors as $hex) {
+				foreach ($result->palette->colors->hex as $hex) {
 					$a = [
 						'type' => 'text',
 						'text' => $hex
 					];		
 					array_push($messages,$a);
+					echo $hex;
 				}
 			}	
 			else if($event['source']['type'] == 'user'){
