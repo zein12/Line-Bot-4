@@ -250,6 +250,27 @@ Hope you enjoy :)'
 					'text' => $ans
 				];				
 			}	
+			else if($cmd[0] == "color") {
+				$url = 'http://www.colourlovers.com/api/palettes/random';
+				$result = file_get_contents($url);
+				$result = simplexml_load_string($result);
+				// $hex = "#ff9900";
+				// list($r, $g, $b) = sscanf($hex, "#%02x%02x%02x");
+				// echo "$hex -> $r $g $b";		
+				$img = $result->palettes->palette->imageUrl;		
+				$messages = [
+					"type" => "image",
+					"originalContentUrl" => $img,
+					"previewImageUrl" => $img
+				];		
+				foreach ($result->palettes->palette->colors as $hex) {
+					$a = [
+						'type' => 'text',
+						'text' => $hex
+					];		
+					array_push($messages,$a);
+				}
+			}	
 			else if($event['source']['type'] == 'user'){
 				if ($event['message']['type'] == 'sticker') {
 					$messages = [
