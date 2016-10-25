@@ -264,13 +264,15 @@ Hope you enjoy :)'
 					"originalContentUrl" => $img,
 					"previewImageUrl" => $img
 				];		
+				$text = $result->palette->badgeUrl->apiUrl;
 				foreach ($result->palette->colors->hex as $hex) {
-					$a = [
-						'type' => 'text',
-						'text' => $hex
-					];		
-					array_push($messages,$a);
+					$text = $text."\n".$hex;
 				}
+				$a = [
+					'type' => 'text',
+					'text' => $hex
+				];		
+				array_push($messages,$a);				
 			}	
 			else if($event['source']['type'] == 'user'){
 				if ($event['message']['type'] == 'sticker') {
