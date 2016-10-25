@@ -53,7 +53,8 @@ if (!is_null($events['events'])) {
 6. rand [min-max](optional) -> to random number from .. to ..
 7. : ... -> to get smart answer
 8. kickbot -> to kick the bot out of the room
-9. help -> to see all the commands
+9. color -> to random a palettes
+10. help -> to see all the commands
 ===============
 Hope you enjoy :)'
 				];						
@@ -270,7 +271,7 @@ Hope you enjoy :)'
 				}
 				$a = [
 					'type' => 'text',
-					'text' => $hex
+					'text' => $text
 				];		
 				array_push($messages,$a);				
 			}	
