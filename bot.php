@@ -315,7 +315,7 @@ Hope you enjoy :)'
 		
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
-			if($cmd[0] == "img" || $cmd[0] == "search") {			
+			if($cmd[0] == "img" || $cmd[0] == "search" || $cmd[0] == "color") {			
 				$data = [
 					'replyToken' => $replyToken,
 					'messages' => $messages,
