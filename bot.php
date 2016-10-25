@@ -256,14 +256,14 @@ Hope you enjoy :)'
 				$result = file_get_contents($url);
 				$result = simplexml_load_string($result);	
 				$img = $result->palette->imageUrl;
-				$img = str_replace('http:','https:',$img);
+				$img = str_replace('http:','https:',$img);	
 				$messages = [
 					[
 						"type" => "image",
 						"originalContentUrl" => $img,
 						"previewImageUrl" => $img
 					]
-				];		
+				];				
 				$text = $result->palette->badgeUrl->apiUrl;
 				foreach ($result->palette->colors->hex as $hex) {
 					// $hex = "#ff9900";
