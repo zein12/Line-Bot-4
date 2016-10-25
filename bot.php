@@ -257,7 +257,9 @@ Hope you enjoy :)'
 				// $hex = "#ff9900";
 				// list($r, $g, $b) = sscanf($hex, "#%02x%02x%02x");
 				// echo "$hex -> $r $g $b";		
+				echo $result;
 				$img = $result->palette->imageUrl;		
+				echo $img;
 				$messages = [
 					"type" => "image",
 					"originalContentUrl" => $img,
