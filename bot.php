@@ -53,7 +53,7 @@ if (!is_null($events['events'])) {
 6. rand [min-max](optional) -> to random number from .. to ..
 7. : ... -> to get smart answer
 8. kickbot -> to kick the bot out of the room
-9. color -> to random a palettes
+9. color -> to random a palette
 10. help -> to see all the commands
 ===============
 Hope you enjoy :)'
@@ -104,6 +104,11 @@ Hope you enjoy :)'
 				$key = '071e93df3d824296a6b86c0e2b85944b';
 				$count = 1;
 				$offset = 0;
+				if(substr($text, -1) == 'x') {
+					$safeSearch = "&safeSearch=Off";
+					$text = substr($text, 0, -1);
+				} 
+				else $safeSearch = '';
 				if (strpos($text, "page") !== FALSE) { 
 					preg_match('/page\s*(\d+)/', $text, $matches);
 					$page = $matches[1];
@@ -121,7 +126,7 @@ Hope you enjoy :)'
 					$text = substr($text, 0, strpos($text, "count"));	
 				}
 				$q = urlencode($text);				
-				$url = 'https://api.cognitive.microsoft.com/bing/v5.0/images/search/?q='.$q.'&count='.$count."&offset=".$offset."&safeSearch=Off";
+				$url = 'https://api.cognitive.microsoft.com/bing/v5.0/images/search/?q='.$q.'&count='.$count."&offset=".$offset.$safeSearch;
 				$headers = array('Ocp-Apim-Subscription-Key: ' . $key);
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, $url);
@@ -263,7 +268,7 @@ Hope you enjoy :)'
 						"originalContentUrl" => $img,
 						"previewImageUrl" => $img
 					]
-				];				
+				];
 				$text = $result->palette->url;
 				foreach ($result->palette->colors->hex as $hex) {
 					// $hex = "#ff9900";
