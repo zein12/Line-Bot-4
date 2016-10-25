@@ -254,19 +254,21 @@ Hope you enjoy :)'
 			else if($cmd[0] == "color") {
 				$url = 'http://www.colourlovers.com/api/palettes/random';
 				$result = file_get_contents($url);
-				$result = simplexml_load_string($result);
-				// $hex = "#ff9900";
-				// list($r, $g, $b) = sscanf($hex, "#%02x%02x%02x");
-				// echo "$hex -> $r $g $b";		
+				$result = simplexml_load_string($result);	
 				$img = $result->palette->imageUrl;
 				$img = str_replace('http:','https:',$img);
 				$messages = [
-					"type" => "image",
-					"originalContentUrl" => $img,
-					"previewImageUrl" => $img
+					[
+						"type" => "image",
+						"originalContentUrl" => $img,
+						"previewImageUrl" => $img
+					]
 				];		
 				$text = $result->palette->badgeUrl->apiUrl;
 				foreach ($result->palette->colors->hex as $hex) {
+					// $hex = "#ff9900";
+					// list($r, $g, $b) = sscanf($hex, "#%02x%02x%02x");
+					// echo "$hex -> $r $g $b";						
 					$text = $text."\n".$hex;
 				}
 				$a = [
