@@ -257,13 +257,13 @@ Hope you enjoy :)'
 				// $hex = "#ff9900";
 				// list($r, $g, $b) = sscanf($hex, "#%02x%02x%02x");
 				// echo "$hex -> $r $g $b";		
-				$img = $result->palettes->palette->imageUrl;		
+				$img = $result->palette->imageUrl;		
 				$messages = [
 					"type" => "image",
 					"originalContentUrl" => $img,
 					"previewImageUrl" => $img
 				];		
-				foreach ($result->palettes->palette->colors as $hex) {
+				foreach ($result->palette->colors as $hex) {
 					$a = [
 						'type' => 'text',
 						'text' => $hex
