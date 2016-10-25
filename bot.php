@@ -258,6 +258,7 @@ Hope you enjoy :)'
 				// list($r, $g, $b) = sscanf($hex, "#%02x%02x%02x");
 				// echo "$hex -> $r $g $b";		
 				$img = $result->palette->imageUrl;
+				$img = str_replace('http:','https:',$img);
 				$messages = [
 					"type" => "image",
 					"originalContentUrl" => $img,
