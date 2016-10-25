@@ -269,7 +269,7 @@ Hope you enjoy :)'
 					// $hex = "#ff9900";
 					list($r, $g, $b) = sscanf($hex, "%02x%02x%02x");
 					// echo "$hex -> $r $g $b";						
-					$text = $text."\n".$hex." | ".$r." "." ".$g." ".$b;
+					$text = $text."\nHEX: ".$hex." RGB: ".$r.",".",".$g.",".$b;
 				}
 				$a = [
 					'type' => 'text',
