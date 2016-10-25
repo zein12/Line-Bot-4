@@ -264,12 +264,12 @@ Hope you enjoy :)'
 						"previewImageUrl" => $img
 					]
 				];				
-				$text = $result->palette->badgeUrl->apiUrl;
+				$text = $result->palette->url;
 				foreach ($result->palette->colors->hex as $hex) {
 					// $hex = "#ff9900";
-					// list($r, $g, $b) = sscanf($hex, "#%02x%02x%02x");
+					list($r, $g, $b) = sscanf($hex, "%02x%02x%02x");
 					// echo "$hex -> $r $g $b";						
-					$text = $text."\n".$hex;
+					$text = $text."\n".$hex." | ".$r." "." ".$g." ".$b;
 				}
 				$a = [
 					'type' => 'text',
