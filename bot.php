@@ -212,7 +212,9 @@ Hope you enjoy :)'
 					]
 				];
 				$i = $count;
+				$foundresult = 0;
 				foreach (array_reverse($data['webPages']['value']) as $value) {
+					$foundresult = 1;
 					if($i == 0) break;
 					$name = $value['name'];
 					$contenturl = $value['url'];
@@ -224,6 +226,13 @@ Hope you enjoy :)'
 					array_push($messages,$a);	
 					$i--;
 				}
+				if($foundresult == 0) {
+					$b = [
+						'type' => 'text',
+						'text' => 'Result: Not found.'			
+					];
+					array_push($messages,$b);
+				}				
 			}
 			else if($cmd[0] == "uid") {
 				$ans = $uid;
@@ -269,7 +278,7 @@ Hope you enjoy :)'
 						"previewImageUrl" => $img
 					]
 				];
-				$text = $result->palette->url;
+				$text = shortenURL($result->palette->url);
 				foreach ($result->palette->colors->hex as $hex) {
 					// $hex = "#ff9900";
 					list($r, $g, $b) = sscanf($hex, "%02x%02x%02x");
