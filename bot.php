@@ -278,7 +278,7 @@ Hope you enjoy :)'
 						"previewImageUrl" => $img
 					]
 				];
-				$text = shortenURL($result->palette->url);
+				$text = $result->palette->url;
 				foreach ($result->palette->colors->hex as $hex) {
 					// $hex = "#ff9900";
 					list($r, $g, $b) = sscanf($hex, "%02x%02x%02x");
