@@ -364,11 +364,7 @@ Hope you enjoy :)'
 			  }
 			  socket_close($sock);
 			}
-
-			#send_remote_syslog("Test");
-			# send_remote_syslog("Any log message");
-			send_remote_syslog($event['message']['text'], $uid);
-			# send_remote_syslog("Something just happened", "a-background-job-name", "whatever-app-name");
+			send_remote_syslog($event['message']['text'], $uid, "linebot");
 		}
 	}
 }
