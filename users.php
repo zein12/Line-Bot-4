@@ -2,8 +2,15 @@
 $access_token = 'UjY+N6xBQrgchpjZB7IU0ck2aypFc37LrIEozsryFd9WZTdI0fNj8xFyi5RCMzJ9e1N/c3JQt8w0XBBw1I6x4ev2Gwkyl8SHPibsqTS1hzdK6MoPza9/lwcQgttNrZWXGJYNsGJi2/ZgQ5TFflEG9wdB04t89/1O/w1cDnyilFU=';
 			$uid=5;
 			$url = "http://www.osk130.com/gain/linebot.php?uid=".$uid."&text=test";
-			$log = file_get_contents($url);
-			echo $log;
+			//$log = file_get_contents($url);
+			//echo $log;
+	    $curlSession = curl_init();
+	    curl_setopt($curlSession, CURLOPT_URL, $url);
+	    curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
+	    curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
+
+	    //$jsonData = json_decode(curl_exec($curlSession));
+	    curl_close($curlSession);			
 			// //Get user profile but can't search userId
 			// //$userId = 'Udc964c94321d2db87bc8f17041ae37ea';
 			// $userId = $_GET['uid'];
