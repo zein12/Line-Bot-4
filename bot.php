@@ -301,7 +301,7 @@ Hope you enjoy :)'
 				}
 				else if($cmd[0] == "tweet" && $uid == 'Udc964c94321d2db87bc8f17041ae37ea') {
 					$text = substr(strstr($text," "), 1);
-					$url = "http://www.jordrot.com/tweet/?msg=".urlencode($text);
+					$url = "http://jordrot.azurewebsites.net/tweet/?msg=".urlencode($text);
 					$ans = file_get_contents($url);
 					$messages = [
 						'type' => 'text',
