@@ -79,7 +79,7 @@ $access_token = 'UjY+N6xBQrgchpjZB7IU0ck2aypFc37LrIEozsryFd9WZTdI0fNj8xFyi5RCMzJ
 				];
 			}
 			// gain Udc964c94321d2db87bc8f17041ae37ea ,poptamonwan U21cd5ea03af3455f9eea4582c0ce6212
-			$uid = "U21cd5ea03af3455f9eea4582c0ce6212";
+			$uid = "Udc964c94321d2db87bc8f17041ae37ea";
 			// Make a POST Request to Messaging API to push to user
 			$url = 'https://api.line.me/v2/bot/message/push';
 			if($_GET['food'] == 1) { 
