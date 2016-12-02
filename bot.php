@@ -1,5 +1,5 @@
 <?php
-$access_token = 'UjY+N6xBQrgchpjZB7IU0ck2aypFc37LrIEozsryFd9WZTdI0fNj8xFyi5RCMzJ9e1N/c3JQt8w0XBBw1I6x4ev2Gwkyl8SHPibsqTS1hzdK6MoPza9/lwcQgttNrZWXGJYNsGJi2/ZgQ5TFflEG9wdB04t89/1O/w1cDnyilFU='; 
+$access_token = 'o4hK4jsIHPLGkGsK7Wc2ea8AFmdfbHd2EXrLZw6t3CxIXOM6/k1OMcMfDrZMYHuve1N/c3JQt8w0XBBw1I6x4ev2Gwkyl8SHPibsqTS1hzfLZwsERRY6KO6OUYNHsWak6JeV6XwEifi/5lkjwxrW2QdB04t89/1O/w1cDnyilFU=';
 
 // Get POST body content
 $content = file_get_contents('php://input');
@@ -45,13 +45,13 @@ if (!is_null($events['events'])) {
 					'type' => 'text',
 					'text' => 'Gain Bot commands:
 ===============
-1. search ... page(optional) 1,2,3 -> to search for websites
-2. img ... count 1-4 page(optional) 1,2,3 -> to search images
-3. th ... -> to translate a word/sentence to Thai
-4. en ... -> to translate a word/sentence to English
+1. search [keyword] page [no.] -> to search for websites
+2. img [keyword] count [no.] page [no.] -> to search images
+3. th [keyword] -> to translate a word/sentence to Thai
+4. en [keyword] -> to translate a word/sentence to English
 5. shorten [url] -> to create Google short link
 6. rand [min-max](optional) -> to random number from .. to ..
-7. : ... -> to get smart answer
+7. : [query] -> to get smart answer
 8. kickbot -> to kick the bot out of the room
 9. color -> to random a palette
 10. help -> to see all the commands
