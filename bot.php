@@ -335,7 +335,6 @@ Semoga menyenangkan :)'
 				exit("Leave room: ".$roomId);
 			}
 			else if($cmd[0] == "About") {
-				$ans = $uid;
 				$messages = [
 					'type' => 'text',
 					'text' => 'MJ = id line zein.jein';
