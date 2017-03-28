@@ -341,7 +341,7 @@ Semoga menyenangkan :)'
 					        'text' => 'MJ = id line zein.jein'
 					];			
 				}
-			
+			}
 			else exit();
 		
 			// Make a POST Request to Messaging API to reply to sender
