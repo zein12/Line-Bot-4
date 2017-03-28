@@ -337,7 +337,7 @@ Semoga menyenangkan :)'
 			else if($cmd[0] == "About") {
 				$messages = [
 					'type' => 'text',
-					'text' => 'MJ = id line zein.jein';
+					'text' => 'MJ = id line zein.jein'
 				];
 			}
 			else exit();
