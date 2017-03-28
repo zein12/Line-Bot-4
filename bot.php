@@ -334,14 +334,6 @@ Semoga menyenangkan :)'
 				curl_close($ch);
 				exit("Leave room: ".$roomId);
 			}
-			else if($event['source']['type'] == 'about'){
-				if ($event['message']['type'] == 'text') {
-					$messages = [
-						'type' => 'text',
-					        'text' => 'MJ = id line zein.jein'
-					];			
-				}
-			}
 			else if(strtolower($text) == "About") {
 				$messages = [
 					'type' => 'text',
