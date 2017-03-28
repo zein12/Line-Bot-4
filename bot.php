@@ -43,20 +43,20 @@ if (!is_null($events['events'])) {
 			if(strtolower($text) == "help") {
 				$messages = [
 					'type' => 'text',
-					'text' => 'Gain Bot commands:
+					'text' => 'perintah Bot:
 ===============
-1. search [keyword] page [no.] -> to search for websites
-2. img [keyword] count [no.] page [no.] -> to search images
-3. th [keyword] -> to translate a word/sentence to Thai
-4. en [keyword] -> to translate a word/sentence to English
-5. shorten [url] -> to create Google short link
-6. rand [min-max](optional) -> to random number from .. to ..
-7. : [query] -> to get smart answer
-8. kickbot -> to kick the bot out of the room
-9. color -> to random a palette
-10. help -> to see all the commands
+1. cari [keyword] halaman [no.] -> Untuk mencari websites
+2. img [keyword] count [no.] page [no.] -> untuk mencari gambar
+3. id [keyword] -> untuk menterjemahkan kata/kalimat ke bahasa indonesia
+4. en [keyword] -> untuk menterjemahkan kata/kalimat ke bahasa inggris
+5. shorten [url] -> untuk membuat Google short link
+6. rand [min-max](optional) -> untuk acak nomer dari .. ke ..
+7. : [query] -> untuk mendapat jawaban pintar
+8. kickbot -> untuk kick bot dari room
+9. color -> untuk acak palette
+10. help -> untuk melihat semua command
 ===============
-Hope you enjoy :)'
+Semoga menyenangkan :)'
 				];						
 			}
 			else if($text[0] == ":" && strlen($text) > 3) {
@@ -244,7 +244,7 @@ Hope you enjoy :)'
 			else if($cmd[0] == "th") {
 				$text = substr(strstr($text," "), 1);
 				$api = "trnsl.1.1.20161018T173244Z.c4506152f104a6d9.f6957b9addfa1b596f1808aaffd0749e656a7c22";
-				$url = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=".$api."&text=".$text."&lang=th";
+				$url = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=".$api."&text=".$text."&lang=id";
 				$ans = file_get_contents($url);
 				$json_a = json_decode($ans,true);
 				$ans = $json_a['text'][0];
