@@ -241,7 +241,7 @@ Semoga menyenangkan :)'
 					'text' => $ans
 				];
 			}
-			else if($cmd[0] == "th") {
+			else if($cmd[0] == "id") {
 				$text = substr(strstr($text," "), 1);
 				$api = "trnsl.1.1.20161018T173244Z.c4506152f104a6d9.f6957b9addfa1b596f1808aaffd0749e656a7c22";
 				$url = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=".$api."&text=".$text."&lang=id";
