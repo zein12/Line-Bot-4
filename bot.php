@@ -334,6 +334,13 @@ Semoga menyenangkan :)'
 				curl_close($ch);
 				exit("Leave room: ".$roomId);
 			}
+			else if($cmd[0] == "About") {
+				$ans = $uid;
+				$messages = [
+					'type' => 'text',
+					'text' => 'MJ = id line zein.jein';
+				];
+			}
 			else exit();
 		
 			// Make a POST Request to Messaging API to reply to sender
