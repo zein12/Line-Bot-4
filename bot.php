@@ -338,7 +338,7 @@ Semoga menyenangkan :)'
 				$messages = [
 					'type' => 'text',
 					'text' => 'MJ = id line zein.jein'
-					]
+					];
 			}
 			else exit();
 		
