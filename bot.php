@@ -342,6 +342,11 @@ Semoga menyenangkan :)'
 					];			
 				}
 			}
+			else if(strtolower($text) == "About") {
+				$messages = [
+					'type' => 'text',
+					'text' => 'MJ = id line zein.jein'
+					}
 			else exit();
 		
 			// Make a POST Request to Messaging API to reply to sender
