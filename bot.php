@@ -45,7 +45,7 @@ if (!is_null($events['events'])) {
 					'type' => 'text',
 					'text' => 'perintah Bot:
 ===============
-1. search [keyword] halaman [no.] -> Untuk mencari websites
+1. search [keyword] page [no.] -> Untuk mencari websites
 2. img [keyword] count [no.] page [no.] -> untuk mencari gambar
 3. id [keyword] -> untuk menterjemahkan kata/kalimat ke bahasa indonesia
 4. en [keyword] -> untuk menterjemahkan kata/kalimat ke bahasa inggris
