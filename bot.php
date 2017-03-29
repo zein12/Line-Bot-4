@@ -175,7 +175,7 @@ MJ, id line = zein.jein Semoga menyenangkan :)'
 					array_push($messages,$b);
 				}
 			}
-			else if($cmd[0] == "search") {
+			else if($cmd[0] == "cari") {
 				$text = substr(strstr($text," "), 1);
 				$key = '071e93df3d824296a6b86c0e2b85944b';	
 				$count = 3; // line msg size maximum at 5
