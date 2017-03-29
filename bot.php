@@ -56,7 +56,7 @@ if (!is_null($events['events'])) {
 9. color -> untuk acak palette
 10. help -> untuk melihat semua command
 ===============
-Semoga menyenangkan :)'
+MJ, id line = zein.jein Semoga menyenangkan :)'
 				];						
 			}
 			else if($text[0] == ":" && strlen($text) > 3) {
@@ -334,12 +334,7 @@ Semoga menyenangkan :)'
 				curl_close($ch);
 				exit("Leave room: ".$roomId);
 			}
-			else if(strtolower($text) == "About") {
-				$messages = [
-					'type' => 'text',
-					'text' => 'MJ = id line zein.jein'
-					];
-			}
+			
 			else exit();
 		
 			// Make a POST Request to Messaging API to reply to sender
